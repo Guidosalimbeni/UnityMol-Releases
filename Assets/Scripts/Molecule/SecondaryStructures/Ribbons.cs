@@ -243,8 +243,11 @@ public class Ribbons {
 	
 	
 	private void ConstructControlPoints(List<Dictionary<string, Vector3>> residueDicts, int res, int ss, int handedness) {
-		//Debug.Log("Ribbons.cs::ConstructControlPoints > Beginning.");
-		Vector3 ca0, ox0, ca1;
+        //Debug.Log("Ribbons.cs::ConstructControlPoints > Beginning.");
+        Vector3 ca0 = Vector3.zero;
+        Vector3 ox0 = Vector3.zero;
+        Vector3 ca1 = Vector3.zero;
+
 		Vector3 p0, p1, p2, p3;
 		
 		p1 = p2 = p3 = Vector3.zero;
@@ -263,11 +266,14 @@ public class Ribbons {
 			success = success && res0.TryGetValue("CA", out ca0);
 			success = success && res0.TryGetValue("O", out ox0);
 			success = success && res1.TryGetValue("CA", out ca1);
+
+            if (!success)
+            {
+                Debug.Log("Ribbons.cs::ConstructControlPoints > Failed to get all the vectors.");
+            }
+				
 			
-			if(!success)
-				Debug.Log("Ribbons.cs::ConstructControlPoints > Failed to get all the vectors.");
-			
-			AddControlPoints(ca0, ox0, ca1, ss, handedness);
+		    AddControlPoints( ca0,  ox0,  ca1, ss, handedness);
 			splineSide1.CopyCPoints(3, 2);
 			splineCenter.CopyCPoints(3, 2);
 			splineSide2.CopyCPoints(3, 2);
@@ -278,6 +284,7 @@ public class Ribbons {
 			success = success && res0.TryGetValue("CA", out ca0);
 			success = success && res0.TryGetValue("O", out ox0);
 			success = success && res1.TryGetValue("CA", out ca1);
+
 			if(!success)
 				Debug.Log("Ribbons.cs::ConstructControlPoints > Failed to get all the vectors.");
 			AddControlPoints(ca0, ox0, ca1, ss, handedness);
