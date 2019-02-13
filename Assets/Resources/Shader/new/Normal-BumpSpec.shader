@@ -261,7 +261,7 @@ ENDCG
 		
 
 		
-				pos = UnityObjectToClipPos (float4(IN.worldPos,0f)); // calcul la position des pixel dans l'espace  camera/
+				pos = UnityObjectToClipPos (float4(IN.worldPos,0)); // calcul la position des pixel dans l'espace  camera/
 				if ( _cut== 1f ){ // active le cut fixe
 	//				if ( (_depthcut + _cutX *IN.worldPos.x+ _cutY *IN.worldPos.y+ _cutZ * IN.worldPos.z) / 500 < 0 ){
 	//					clip(-1);

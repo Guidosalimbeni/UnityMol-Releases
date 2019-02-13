@@ -80,8 +80,8 @@ namespace Molecule.View.DisplayBond
 		public int number=1;
 		public List<int[]> bondList=new List<int[]>();
 		public List<int[]> bondEPList=new List<int[]>();
-		
-		Particle[] p = new Particle[MoleculeModel.bondEPList.Count/FunctionConfig.number];
+
+        ParticleSystem.Particle[] p = new ParticleSystem.Particle[MoleculeModel.bondEPList.Count/FunctionConfig.number];
 		int bondindex=0;
 
 		public BondParticleStyle()
@@ -277,7 +277,7 @@ namespace Molecule.View.DisplayBond
 					p[bondindex+start].position=(atom0position+atom1position)/2;
 					p[bondindex+start].size=(float)(atomradius0+atomradius1)/2;
 					p[bondindex+start].color=Color.yellow;
-					p[bondindex+start].energy=1000;
+					p[bondindex+start].angularVelocity=1000;
 					
 			}
 

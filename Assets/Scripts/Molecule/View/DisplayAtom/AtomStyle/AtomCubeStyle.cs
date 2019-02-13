@@ -88,9 +88,9 @@ namespace Molecule.View.DisplayAtom {
 		
 		public AtomCubeStyle() {
 			if(UIData.secondarystruct)
-				MoleculeModel.p = new Particle[MoleculeModel.CaSplineList.Count];
+				MoleculeModel.p = new ParticleSystem.Particle[MoleculeModel.CaSplineList.Count];
 			else
-				MoleculeModel.p = new Particle[MoleculeModel.atomsLocationlist.Count];
+				MoleculeModel.p = new ParticleSystem.Particle[MoleculeModel.atomsLocationlist.Count];
 
 			scale[0]=(MoleculeModel.carbonScale)/100;
 			scale[1]=(MoleculeModel.nitrogenScale)/100;
@@ -903,7 +903,7 @@ namespace Molecule.View.DisplayAtom {
 			MoleculeModel.p[start].position=location;
 			MoleculeModel.p[start].size=(float)(v[0]);
 			MoleculeModel.p[start].color=c;
-			MoleculeModel.p[start].energy=1000;
+			MoleculeModel.p[start].angularVelocity=1000;
 		}
 	}
 }

@@ -79,14 +79,15 @@ public class ParticleEffect : MonoBehaviour
 
     public  int atomcount;
 //	ArrayList atomLocationalist;
-	public Particle[] p ;
+	public ParticleSystem.Particle[] p ;
 	
-	public Particle[] pn ;
+	public ParticleSystem.Particle[] pn ;
 	
-	public ParticleEmitter emitter;
-	
-//	public bool radiuschange=false;
-	
+	//public ParticleEmitter emitter;
+    public ParticleSystem emitter;
+
+    //	public bool radiuschange=false;
+
     public void Start() {
     }
 
@@ -99,25 +100,28 @@ public class ParticleEffect : MonoBehaviour
         effectObject.parent = this.gameObject.transform;
         
         // Get the particle emitter from the new effect object.
-        emitter = effectObject.GetComponent<ParticleEmitter>();
-        
+        emitter = effectObject.GetComponent<ParticleSystem>();
+
         // Make sure autodestruct is on so that dead particles systems get destroyed.
-        ParticleAnimator animator = emitter.transform.GetComponent<ParticleAnimator>();
+        ParticleSystem animator = emitter.transform.GetComponent<ParticleSystem>();
         if (animator != null)
-            animator.autodestruct = true;
+            animator.IsAlive(false);
+            //animator.autodestruct = true;
         
         // Generate the particles.
         emitter.Emit(atomcount);
-        pn=new Particle[p.Length];
+        pn=new ParticleSystem.Particle[p.Length];
         for(int i=0;i<p.Length;i++)
         {
         		pn[i].size=p[i].size*radiusFactor*2;
         		pn[i].position=p[i].position;
 				pn[i].color=p[i].color;
-				pn[i].energy=p[i].energy;
+                pn[i].angularVelocity = p[i].angularVelocity;
+                //pn[i].energy=p[i].energy;
         }
-// 		pn=p;
-        emitter.particles = pn;
+        // 		pn=p;
+        emitter.SetParticles(pn);
+        //emitter.particles = pn;
 		UI.UIData.isParticlesInitialized = true;
     }
     
@@ -135,7 +139,7 @@ public class ParticleEffect : MonoBehaviour
         	{
         		for(int i=0;i<p.Length;i++)
         			pn[i].size=p[i].size*radiusFactor*2;
-        		emitter.particles = pn;
+        		emitter.SetParticles(pn);
        		}
         	radiusFactorold=radiusFactor;	
         }
@@ -150,25 +154,27 @@ public class ParticleEffect : MonoBehaviour
         
         // Loop thru the particle emitter children of this object.  
 		// Each one is a particle effect system we want to destroy.
-        ParticleEmitter[] emitters = this.transform.GetComponentsInChildren<ParticleEmitter>();
-        foreach (ParticleEmitter emitter in emitters) 
+        ParticleSystem[] emitters = this.transform.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem emitter in emitters) 
         {
             Debug.Log("resetEffect killing: " + emitter.name);
             // Make sure autodestruct is on.
-            ParticleAnimator animator = emitter.transform.GetComponent<ParticleAnimator>();
+            ParticleSystem animator = emitter.transform.GetComponent<ParticleSystem>();
             if (animator != null)
-                animator.autodestruct = true;
+                animator.IsAlive (false);
             // Now loop thru the particles and set their energies to a small number.  The effect will
             // subsequently autodestruct.  I originally tried setting the energy to zero, but in that
             // case they did *not* autodestruct.
             // I originally tried simply doing a Destroy on the emitter, but got threatening runtime messages.
-            Particle[] p  = emitter.particles;
+            /*
+            ParticleSystem.Particle[] p  = emitter.particles;
             for (int i=0; i < p.Length;  i++) 
             {
                 p[i].energy = 0.1f;
             }
             emitter.particles = p;
             emitter.ClearParticles();
+            */
         }
        this.gameObject.transform.DetachChildren();
 //       GameObject Particleclone=GameObject.Find("particle(Clone)");

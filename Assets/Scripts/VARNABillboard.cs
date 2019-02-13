@@ -15,10 +15,16 @@ public class VARNABillboard : MonoBehaviour {
 	private Process varnaProcess;
 	private Thread oThread;
 	
-	private string outputDirectory = Application.dataPath + "/Resources";
+	private string outputDirectory;
 
-	// Use this for initialization
-	void Start () {
+
+    private void Awake()
+    {
+        outputDirectory = Application.dataPath + "/Resources";
+    }
+
+    // Use this for initialization
+    void Start () {
 		m_Camera = GameObject.Find ("Camera");
 		
 		gameObject.transform.localPosition = new Vector3(2.0f,-1.0f,3.0f);

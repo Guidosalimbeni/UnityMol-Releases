@@ -2320,6 +2320,7 @@ namespace UI{
 			}
 			GUILayout.EndHorizontal ();
 
+            /*
 			GUILayout.BeginHorizontal();
 			// Make a toggle for DOF :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 			toggle_VE_DOF = GUILayout.Toggle (toggle_VE_DOF, new GUIContent ("DOF", "Toggle depth of field effect."));
@@ -2336,7 +2337,10 @@ namespace UI{
 				Camera.main.GetComponent<SelectAtomFocus>().enabled = true;
 			}
 			GUILayout.EndHorizontal ();
+
+            */
 			
+            /*
 			GUILayout.BeginHorizontal ();
 			// Make a toggle for Crease :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 			toggle_VE_CREASE = GUILayout.Toggle (toggle_VE_CREASE, new GUIContent ("CREASE", "Toggle crease effect"));
@@ -2349,6 +2353,8 @@ namespace UI{
 				Camera.main.GetComponent<Crease> ().enabled = true ;
 			}
 			GUILayout.EndHorizontal ();
+            */
+
 
 			GUILayout.BeginHorizontal ();
 			// Make a toggle for EDGE :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

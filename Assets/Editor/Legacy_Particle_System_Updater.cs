@@ -60,8 +60,8 @@ public class LegacyParticleUpdater : ScriptableWizard
     };
 
     public LegacyCleanupMode cleanupMode = LegacyCleanupMode.DisableLegacyRenderer;
-    private ParticleEmitter[] components;
-    private ParticleEmitter[] prefabs;
+    private ParticleSystem[] components;
+    private ParticleSystem[] prefabs;
 
     [MenuItem("Assets/Upgrade Legacy Particles")]
     public static void ShowWindow()

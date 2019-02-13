@@ -94,9 +94,9 @@ public class SelectAtomFocus : MonoBehaviour {
 					//Camera.main.GetComponent<DepthOfFieldScatter>().focalLength = distance;
 //					Camera.main.GetComponent<DepthOfFieldScatter>().FocalDistance01 = distance;
 					Debug.Log(myObj.transform.position.ToString());
-					Camera.main.GetComponent<DepthOfFieldScatter>().focalTransform = myObj.transform;
-					Debug.Log(Camera.main.GetComponent<DepthOfFieldScatter>().focalTransform.position.ToString());
-					Camera.main.GetComponent<DepthOfFieldScatter>().focalLength = distance;
+					//Camera.main.GetComponent<DepthOfFieldScatter>().focalTransform = myObj.transform;
+					//Debug.Log(Camera.main.GetComponent<DepthOfFieldScatter>().focalTransform.position.ToString());
+					//Camera.main.GetComponent<DepthOfFieldScatter>().focalLength = distance;
 					Debug.Log("Refocusing DOF effect with distance :");
 					Debug.Log(distance.ToString());
 				}

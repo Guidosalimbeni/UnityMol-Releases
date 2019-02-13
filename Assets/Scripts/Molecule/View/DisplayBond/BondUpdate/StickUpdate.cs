@@ -88,7 +88,9 @@ public class StickUpdate : MonoBehaviour {
 	public float oldrayon1 = 2.0f;
 	public float oldrayon2 = 2.0f;
 	
-	public ParticleEmitter emitter;
+    
+
+	//public ParticleEmitter emitter;
 	
 	public bool independant = false;
 	
@@ -114,9 +116,15 @@ public class StickUpdate : MonoBehaviour {
 	
 	// Only check for d3d once
 //	private bool d3d= false;
-	void  Start (){
-//		d3d = SystemInfo.graphicsDeviceVersion.IndexOf("Direct3D") > -1;
-		GetComponent<Renderer>().material.SetColor("_Color", atompointer1.GetComponent<Renderer>().material.GetColor("_Color"));
+	void  Awake (){
+
+        if ((gameObject.GetComponent("StickUpdate") as StickUpdate) != null)
+        {
+            Debug.Log(gameObject.name + "------------------------------------- guido");
+        }
+
+        //		d3d = SystemInfo.graphicsDeviceVersion.IndexOf("Direct3D") > -1;
+        GetComponent<Renderer>().material.SetColor("_Color", atompointer1.GetComponent<Renderer>().material.GetColor("_Color"));
 		GetComponent<Renderer>().material.SetColor("_Color2", atompointer2.GetComponent<Renderer>().material.GetColor("_Color"));
 		
 		GetComponent<Renderer>().material.SetVector("_TexPos1", atompointer1.transform.position);

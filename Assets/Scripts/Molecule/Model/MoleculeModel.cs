@@ -418,9 +418,9 @@ namespace Molecule.Model {
 		
 		public static string FPS="";
 		
-		public static Particle[] p;
+		public static ParticleSystem.Particle[] p;
 		
-		public static Particle[] fieldlinep;
+		public static ParticleSystem.Particle[] fieldlinep;
 
 		public static string newtooltip;
 		

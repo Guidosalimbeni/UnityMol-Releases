@@ -65,7 +65,7 @@ using UI;
 
 public class ShurikenParticleManager : GenericManager {
 	public ParticleSystem pSystem;
-	private Particle[] sourceParticles;
+	private ParticleSystem.Particle[] sourceParticles;
 	private static Vector3 LITTLE_OFFSET = new Vector3(0f, 0f, -1f); // not sure why, but this is needed
 	private ParticleSystem.Particle[] particles; // not exactly sure what the difference between Particle and ParticleSystem.Particle is
 	public static int pNumber;
